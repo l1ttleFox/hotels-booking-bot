@@ -1,20 +1,17 @@
-import telebot
-
-TOKEN = '6226253771:AAEaRAnOx63kbSVkST3c4HzB804Y4XR47co'
-
-# аргумент parce_mode, скорее всего, будет другой
-bot = telebot.TeleBot(TOKEN, parse_mode=None)
+""" Основной файл бота. Запускать это """
 
 
-@bot.message_handler(commands=['hello-world'])
-def test_message(message):
-    bot.send_message(message.chat.id, 'Если вы видите это сообщение, значит все работает.')
-
-
-@bot.message_handler(func=lambda message: message.text.lower() == 'привет')
-def test_hello_message(message):
-    bot.reply_to(message, 'Привет!')
+from loader import bot
+import handlers
+from telebot.custom_filters import StateFilter
+import utils
+from loguru import logger
 
 
 if __name__ == '__main__':
+    bot.add_custom_filter(StateFilter(bot))
+    utils.set_bot_commands.set_default_commands(bot)
+    logger.info("Bot commands are set.")
+    logger.success("Starting the Bot.")
     bot.infinity_polling()
+    logger.info("Bot stopped.")
