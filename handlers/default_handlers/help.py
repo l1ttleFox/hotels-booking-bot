@@ -1,15 +1,16 @@
-""" Тут будет реализация команды /help. """
+""" Файл для команды /help. """
 
 from loguru import logger
 from telebot.types import Message
 from loader import bot
-from database.message_history import save_message
+from database.history.message_history import save_message
 
 
 @bot.message_handler(commands=["help"])
 @logger.catch()
 def bot_start(message: Message) -> None:
     """ Хендлер для команды help. """
-    save_message(message)
     
+    save_message(message)
     bot.send_message(message.chat.id, "/survey - пройти опрос\n/history - история запросов.")
+    
