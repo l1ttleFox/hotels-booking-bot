@@ -3,6 +3,7 @@
 from config_data.config import headers
 from loguru import logger
 import requests
+from requests.exceptions import RequestException
 
 
 @logger.catch()
@@ -31,7 +32,7 @@ def get_request(url: str, params: dict) -> dict:
     
     except ConnectionError:
         logger.error("Connection lost.")
-    except:
+    except RequestException:
         logger.error("During the request something went wrong.")
 
 
@@ -48,5 +49,5 @@ def post_request(url: str, params: dict) -> dict:
     
     except ConnectionError:
         logger.error("Connection lost.")
-    except:
+    except RequestException:
         logger.error("During request something went wrong.")

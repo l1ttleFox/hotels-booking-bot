@@ -7,7 +7,7 @@ from loguru import logger
 class HotelInfoState(StatesGroup):
     """ Класс для хранения объекта стадии пользователя во время выбора отеля. Родитель: StatesGroup. """
     
-    start = ()
+    start = State()
     location = State()
     check_in_date = State()
     check_out_date = State()

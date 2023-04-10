@@ -165,8 +165,7 @@ def get_kids_ages(message: Message) -> None:
             save_travelers_info(data)
             
         bot.set_state(message.from_user.id, HotelInfoState.ready, message.chat.id)
-        bot.send_message(message.from_user.id, "Отлично! Теперь я могу подобрать Вам отель.\n"
-                                               "Используйте вашу команду еще раз.")
+        bot.send_message(message.from_user.id, "Отлично! Теперь я могу подобрать Вам отель.\nИспользуйте вашу команду еще раз.")
         
     except ValueError:
         bot.send_message(message.from_user.id, "Попробуйте еще раз.")

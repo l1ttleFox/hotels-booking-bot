@@ -12,10 +12,10 @@ def get_neighborhood_id(location: str) -> list:
     response = api_request("locations/v3/search", {"q": location, "locale": "ru_RU"}, "GET")
     objects = response["sr"]
     
-    for i_obj in objects:
-        if i_obj["type"] == "NEIGHBORHOOD" or i_obj["type"] == "CITY":
-            i_neighborhood = {"name": i_obj["regionNames"]["displayName"], "id": i_obj["gaiaId"]}
+    for i_object in objects:
+        if i_object["type"] == "NEIGHBORHOOD" or i_object["type"] == "CITY":
+            i_neighborhood = {"name": i_object["regionNames"]["displayName"], "id": i_object["gaiaId"]}
             neighborhoods.append(i_neighborhood)
-            logger.debug(f"Added neighborhood: {i_obj['regionNames']['displayName']} - {i_obj['gaiaId']}.")
+            logger.debug(f"Added neighborhood: {i_object['regionNames']['displayName']} - {i_object['gaiaId']}.")
             
     return neighborhoods

@@ -8,7 +8,7 @@ from loguru import logger
 class HotelSelectionState(StatesGroup):
     """ Класс для хранения объекта стадии пользователя во время выбора отеля. Родитель: StatesGroup. """
     
-    start = ()
+    start = State()
     next_hotel = State()
     more_info = State()
 
