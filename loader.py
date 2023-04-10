@@ -5,11 +5,11 @@ from telebot.storage import StateMemoryStorage
 from config_data import config
 from loguru import logger
 
-
+# сейчас размер сжатия стоит 100мб из-за дебагов, позже будет 100кб
 logger.add("bot.log",
            format="{time} {level} {message}",
            level="DEBUG",
-           rotation="100 KB",
+           rotation="100 MB",
            compression="zip"
            )
 

@@ -23,7 +23,7 @@ def get_hotels(user_info: dict):
         "rooms": user_info["rooms"],
         "resultsStartingIndex": 0,
         "resultsSize": 100,
-        "sort": "PRICE_LOW_TO_HIGH",
+        "sort": user_info["sort"],
         "filters": {"availableFilter": "SHOW_AVAILABLE_ONLY"}
     }
     

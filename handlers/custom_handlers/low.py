@@ -88,7 +88,7 @@ def choosing_hotel(message: dict):
         hotel_counter = data["hotel_counter"]
         
         if hotel_counter == 0:
-            useful_hotels_request(message["user_id"])
+            useful_hotels_request(message["user_id"], "low")
             hotels = pull_hotels(pull_location_id(str(message["user_id"])))
             data["hotels"] = hotels
         else:

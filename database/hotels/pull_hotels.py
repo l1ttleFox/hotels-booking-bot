@@ -14,7 +14,8 @@ def pull_hotels(location_id: str | int) -> list:
     with sqlite3.connect(path) as hotels:
         cur = hotels.cursor()
         cur.execute(f"""SELECT hotel_id, hotel_name, price, image FROM hotels
-                        WHERE location_id == {str(location_id)};""")
+                        WHERE location_id == {str(location_id)}
+                        ORDER BY id DESC""")
         raw_hotels = cur.fetchall()
         
         for i_hotel in raw_hotels:
