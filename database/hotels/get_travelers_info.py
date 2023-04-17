@@ -44,7 +44,3 @@ def pull_traveler_info(user_id: str) -> dict:
             travelers_data["rooms"] = [{"adults": travelers_data["adults"]}]
             
     return travelers_data
-
-
-if __name__ == "__main__":
-    logger.debug(pull_traveler_info(732290864))

@@ -25,7 +25,7 @@ def detail_selection_keyboard(message: dict) -> InlineKeyboardMarkup:
     
     keyboard = InlineKeyboardMarkup()
     keyboard.add(InlineKeyboardButton(text="Мне подходит",
-                                      callback_data=f"SH_next {message['user_id']} {message['chat_id']}"))
+                                      callback_data=f"SH_stop {message['user_id']} {message['chat_id']}"))
     
     keyboard.add(InlineKeyboardButton(text="Дальше",
                                       callback_data=f"SH_next {message['user_id']} {message['chat_id']}"))

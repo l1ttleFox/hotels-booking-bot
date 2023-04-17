@@ -24,7 +24,7 @@ def get_hotels(user_info: dict):
         "resultsStartingIndex": 0,
         "resultsSize": 100,
         "sort": user_info["sort"],
-        "filters": {"availableFilter": "SHOW_AVAILABLE_ONLY"}
+        "filters": user_info["filters"]
     }
     
     logger.debug(payload)
