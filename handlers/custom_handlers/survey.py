@@ -17,7 +17,7 @@ def survey(message: Message) -> None:
     save_message(message)
     
     bot.set_state(message.from_user.id, UserInfoState.name, message.chat.id)
-    bot.send_message(message.from_user.id, f"Привет, {message.from_user.username}. Введи свое имя")
+    bot.send_message(message.from_user.id, f"Доброго дня, {message.from_user.username}. Введите Ваше имя")
     
     
 @bot.message_handler(state=UserInfoState.name)
@@ -29,9 +29,8 @@ def get_name(message: Message) -> None:
     save_message(message)
     
     if message.text.isalpha():
-        bot.send_message(message.from_user.id, "Я запомнил. Теперь введи свой возраст.")
+        bot.send_message(message.from_user.id, "Я запомнил. Теперь введите Ваш возраст.")
         bot.set_state(message.from_user.id, UserInfoState.age, message.chat.id)
-        logger.info("Name state in survey ended.")
         
         with bot.retrieve_data(message.from_user.id, message.chat.id) as data:
             data["name"] = message.text
@@ -48,12 +47,11 @@ def get_age(message: Message) -> None:
     save_message(message)
     
     if message.text.isdigit():
-        bot.send_message(message.from_user.id, "Я запомнил. Теперь введи свою страну.")
+        bot.send_message(message.from_user.id, "Я запомнил. Теперь введите Вашу страну.")
         bot.set_state(message.from_user.id, UserInfoState.country)
         
         with bot.retrieve_data(message.from_user.id, message.chat.id) as data:
             data["age"] = message.text
-            logger.info("Age state in survey ended.")
     else:
         bot.send_message(message.from_user.id, "Возраст может содержать только цифры.")
 
@@ -66,12 +64,11 @@ def get_country(message: Message) -> None:
     logger.info("Country state in survey started.")
     save_message(message)
     
-    bot.send_message(message.from_user.id, "Я запомнил. Теперь введи свой город.")
+    bot.send_message(message.from_user.id, "Я запомнил. Теперь введите Ваш город.")
     bot.set_state(message.from_user.id, UserInfoState.city, message.chat.id)
     
     with bot.retrieve_data(message.from_user.id, message.chat.id) as data:
         data["country"] = message.text
-        logger.info("Country state in survey ended.")
 
 
 @bot.message_handler(state=UserInfoState.city)
@@ -82,15 +79,14 @@ def get_city(message: Message) -> None:
     logger.info("City state in survey started.")
     save_message(message)
     
-    bot.send_message(message.from_user.id, "Я запомнил. Теперь нажми на кнопку, чтобы запустить самоуничтожение.")
-    bot.send_message(message.from_user.id, "Шучу, конечно. Она отправит мне твой номер телефона",
+    bot.send_message(message.from_user.id, "Я запомнил. Теперь нажмите на кнопку, чтобы запустить самоуничтожение.")
+    bot.send_message(message.from_user.id, "Шучу, конечно. Она отправит мне Ваш номер телефона",
                      reply_markup=request_contact())
     
     bot.set_state(message.from_user.id, UserInfoState.phone_number, message.chat.id)
     
     with bot.retrieve_data(message.from_user.id, message.chat.id) as data:
         data["city"] = message.text
-        logger.info("City state in survey ended.")
         
 
 @bot.message_handler(state=UserInfoState.phone_number, content_types=["contact", "text"])
@@ -116,11 +112,7 @@ def get_phone_number(message: Message) -> None:
             bot.send_message(message.from_user.id, "Спасибо за ваши данные!")
             bot.send_message(message.from_user.id, total_info)
             bot.send_message(message.from_user.id, "Если в данных есть ошибка, пройдите опрос заново.")
-            logger.info("Contact state in survey ended.")
             
-            # TODO эта строка удаляет стадию пользователя в сценарии, но, если ее раскомментировать, возникает ошибка.
-            # bot.delete_state(message.from_user.id, message.chat.id)
-
     else:
-        bot.send_message(message.from_user.id, "Тебе говорят нажать на кнопу, почему ты не нажимаешь?")
+        bot.send_message(message.from_user.id, "Пожалуйста, нажмите на кнопку.")
         

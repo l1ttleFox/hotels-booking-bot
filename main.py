@@ -1,4 +1,4 @@
-""" Основной файл бота. Запускать это """
+""" Основной файл бота. Запускать это. """
 
 
 from loader import bot
@@ -15,3 +15,4 @@ if __name__ == "__main__":
     logger.success("Starting the Bot.")
     bot.infinity_polling()
     logger.info("Bot stopped.")
+    

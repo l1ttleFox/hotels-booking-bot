@@ -13,7 +13,6 @@ def save_travelers_info(travelers_info: dict) -> None:
     with sqlite3.connect(path) as travelers:
         cur = travelers.cursor()
         if travelers_info.get("kids", 0):
-            logger.debug(travelers_info)
             cur.execute(f"""INSERT INTO travelers (user_id, location_id, check_in_date, check_out_date, adults, kids, kids_ages)
              VALUES ({int(travelers_info["user_id"])},
                      {travelers_info["detail_location_id"]},

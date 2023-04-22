@@ -21,10 +21,8 @@ def useful_hotels_request(user_id: str | int, sort: str, filters=None) -> None:
         
     user_info = pull_traveler_info(str(user_id))
     if sort == "low":
-        logger.debug("low")
         user_info["sort"] = "PRICE_LOW_TO_HIGH"
     elif sort == "high":
-        logger.debug("high")
         user_info["sort"] = "PRICE_HIGH_TO_LOW"
     user_info["filters"] = filters
         

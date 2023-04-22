@@ -1,4 +1,4 @@
-""" Файл для сборки пакета с обработчиками сообщений. """
+""" Пакет для работы с хендлерами сообщений. """
 
 from . import custom_handlers
 from . import default_handlers

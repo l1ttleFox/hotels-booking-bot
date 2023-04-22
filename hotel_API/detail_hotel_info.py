@@ -43,5 +43,4 @@ def raw_detail_hotel_info_handle(raw_hotel_info: dict) -> dict:
     
     result["score"] = property_info["reviewInfo"]["summary"]["overallScoreWithDescriptionA11y"]["value"]
 
-    logger.debug(result)
     return result

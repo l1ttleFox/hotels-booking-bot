@@ -10,6 +10,3 @@ class PriceSelectionState(StatesGroup):
     min_price = State()
     max_price = State()
     ready = State()
-
-
-logger.info("Class 'PriceState' created.")

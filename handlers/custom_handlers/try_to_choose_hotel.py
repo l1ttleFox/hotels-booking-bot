@@ -1,3 +1,5 @@
+""" Файл для команд /high и /low, когда информация о путешественниках еще не собрана. """
+
 from loader import bot
 from loguru import logger
 from telebot.types import Message

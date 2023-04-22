@@ -38,7 +38,6 @@ def pull_traveler_info(user_id: str) -> dict:
                     "children": children
                 }
             ]
-            logger.debug(travelers_data["rooms"])
             
         else:
             travelers_data["rooms"] = [{"adults": travelers_data["adults"]}]

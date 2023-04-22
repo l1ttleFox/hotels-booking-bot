@@ -1,3 +1,5 @@
+""" Файл для функции выбора отеля. """
+
 from loader import bot
 from loguru import logger
 from database.hotels.pull_hotels import pull_hotels
@@ -7,9 +9,9 @@ from keyboards.inline.hotel_selection import hotel_selection_keyboard
 
 
 @logger.catch()
-def choosing_hotel(message: dict):
+def choosing_hotel(message: dict) -> None:
+    """ Функция выбора отеля. """
     with bot.retrieve_data(int(message["user_id"]), int(message["chat_id"])) as data:
-        logger.debug(data)
         hotel_counter = data["hotel_counter"]
         
         if hotel_counter == 0:

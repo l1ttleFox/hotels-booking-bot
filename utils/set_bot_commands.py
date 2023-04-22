@@ -10,5 +10,3 @@ def set_default_commands(bot):
     """ Функция создаёт меню с командами в телеграмме для удобной навигации. """
     
     bot.set_my_commands([BotCommand(*i) for i in DEFAULT_COMMANDS])
-    logger.info("Bot's command menu created")
-    

@@ -27,6 +27,5 @@ def get_hotels(user_info: dict):
         "filters": user_info["filters"]
     }
     
-    logger.debug(payload)
     response = basic_request.api_request("properties/v2/list", payload, "POST")
     return response

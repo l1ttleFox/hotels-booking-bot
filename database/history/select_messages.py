@@ -5,6 +5,7 @@ import sqlite3
 from telebot.types import Message
 
 
+@logger.catch()
 def select_messages(message: Message) -> list:
     """ Функция выбирает из бд с командами пользователя последние 10. """
     
@@ -21,7 +22,7 @@ def select_messages(message: Message) -> list:
         
         result = []
         for i_message in data:
-            logger.debug(f"{i_message['message']}:{i_message['time']}")
             result.append(i_message["message"])
             
         return result
+    

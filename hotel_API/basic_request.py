@@ -25,8 +25,6 @@ def get_request(url: str, params: dict) -> dict:
     
     try:
         response = requests.get(url, params=params, headers=headers, timeout=10)
-        logger.debug("GET response caught.")
-        logger.debug(f"Status code:{response.status_code}")
         if response.status_code == requests.codes.ok:
             return response.json()
     
@@ -42,8 +40,6 @@ def post_request(url: str, params: dict) -> dict:
     
     try:
         response = requests.post(url, json=params, headers=headers, timeout=10)
-        logger.debug("POST response caught.")
-        logger.debug(f"Status code:{response.status_code}")
         if response.status_code == requests.codes.ok:
             return response.json()
     

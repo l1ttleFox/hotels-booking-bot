@@ -11,6 +11,5 @@ def get_location_id(location: str) -> str:
     
     response = basic_request.api_request("locations/v3/search", {"q": location, "locate": "ru_Ru"}, "GET")
     location_id = get_gaiaid(response)
-    logger.debug(f"gaiaId: {location_id}")
     
     return location_id

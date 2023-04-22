@@ -19,7 +19,6 @@ def pull_hotels(location_id: str | int) -> list:
         raw_hotels = cur.fetchall()
         
         for i_hotel in raw_hotels:
-            logger.debug(i_hotel)
             
             if len(i_hotel) == 4:
                 result_hotels.append(i_hotel)

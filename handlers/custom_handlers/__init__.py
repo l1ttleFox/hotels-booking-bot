@@ -1,4 +1,4 @@
-""" Файл для сборки пакета с кастомными обработчиками сообщений. """
+""" Субпакет для работы с кастомными хендлерами сообщений. """
 
 from . import history
 from . import low
@@ -9,6 +9,7 @@ from . import collect_hotel_info
 from . import callback
 from . import choosing_hotel
 from . import try_to_choose_hotel
+from . import weather
 
 __all__ = [
     "history",
@@ -19,5 +20,6 @@ __all__ = [
     "collect_hotel_info",
     "try_to_choose_hotel",
     "callback",
-    "choosing_hotel"
+    "choosing_hotel",
+    "weather"
 ]

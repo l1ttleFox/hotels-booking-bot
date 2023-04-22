@@ -15,6 +15,3 @@ class HotelInfoState(StatesGroup):
     kids = State()
     kids_age = State()
     ready = State()
-
-
-logger.info("Class 'HotelInfoState' created.")

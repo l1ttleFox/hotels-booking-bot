@@ -15,7 +15,6 @@ def hotel_selection_keyboard(hotel_id: str | int, message: dict) -> InlineKeyboa
     keyboard.add(InlineKeyboardButton(text="Дальше",
                                       callback_data=f"SH_next {message['user_id']} {message['chat_id']}"))
     
-    logger.info("Select hotel keyboard created.")
     return keyboard
 
 
@@ -30,5 +29,4 @@ def detail_selection_keyboard(message: dict) -> InlineKeyboardMarkup:
     keyboard.add(InlineKeyboardButton(text="Дальше",
                                       callback_data=f"SH_next {message['user_id']} {message['chat_id']}"))
     
-    logger.info("Select hotel keyboard created.")
     return keyboard

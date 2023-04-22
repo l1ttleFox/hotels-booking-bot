@@ -12,6 +12,3 @@ class UserInfoState(StatesGroup):
     country = State()
     city = State()
     phone_number = State()
-
-
-logger.info("Class 'UserInfoState' created.")

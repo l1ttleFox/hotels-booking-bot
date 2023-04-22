@@ -8,6 +8,8 @@ from database.history.select_messages import select_messages
 
 @bot.message_handler(commands=["history"])
 def bot_history(message: Message) -> None:
+    """ Хендлер для команды /history. """
+    
     logger.info("Command /history called.")
     
     last_messages = select_messages(message)

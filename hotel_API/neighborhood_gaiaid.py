@@ -16,6 +16,5 @@ def get_neighborhood_id(location: str) -> list:
         if i_object["type"] == "NEIGHBORHOOD" or i_object["type"] == "CITY":
             i_neighborhood = {"name": i_object["regionNames"]["displayName"], "id": i_object["gaiaId"]}
             neighborhoods.append(i_neighborhood)
-            logger.debug(f"Added neighborhood: {i_object['regionNames']['displayName']} - {i_object['gaiaId']}.")
             
     return neighborhoods

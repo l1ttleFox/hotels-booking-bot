@@ -98,3 +98,4 @@ def get_min_price(message: Message) -> None:
     
     bot.send_message(message.from_user.id, "Хорошо, какая минимальная цена? (в долларах)")
     bot.set_state(message.from_user.id, PriceSelectionState.min_price, message.chat.id)
+    
