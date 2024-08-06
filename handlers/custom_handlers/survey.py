@@ -89,7 +89,7 @@ def get_city(message: Message) -> None:
         data["city"] = message.text
         
 
-@bot.message_handler(state=UserInfoState.phone_number, content_types=["contact", "text"])
+@bot.message_handler(state=UserInfoState.phone_number, content_types=["contact"])
 @logger.catch()
 def get_phone_number(message: Message) -> None:
     """ Хендлер для состояния запроса номера телефона. """
@@ -109,9 +109,10 @@ def get_phone_number(message: Message) -> None:
                 phone_number=data["phone_number"]
             )
 
-            bot.send_message(message.from_user.id, "Спасибо за ваши данные!")
-            bot.send_message(message.from_user.id, total_info)
-            bot.send_message(message.from_user.id, "Если в данных есть ошибка, пройдите опрос заново.")
+        bot.send_message(message.from_user.id, "Спасибо за ваши данные!")
+        bot.send_message(message.from_user.id, "Если в данных есть ошибка, пройдите опрос заново.")
+        bot.send_message(message.from_user.id, total_info)
+        bot.delete_state(message.from_user, message.chat.id)
             
     else:
         bot.send_message(message.from_user.id, "Пожалуйста, нажмите на кнопку.")

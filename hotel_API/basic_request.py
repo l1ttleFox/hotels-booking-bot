@@ -12,6 +12,7 @@ def api_request(method_endswith: str, params: dict, method_type: str) -> dict:
     
     url = f"https://hotels4.p.rapidapi.com/{method_endswith}"
     logger.info(f"Trying to get response from {url}.")
+    logger.info(f"params: {params}")
     
     if method_type == "GET":
         return get_request(url=url, params=params)

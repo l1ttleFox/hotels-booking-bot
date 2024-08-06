@@ -20,7 +20,11 @@ def callback_handler(call) -> None:
         """ Тут вызываем функцию которая выводит конкретную информацию об отеле. """
         
         hotel_info = detail_info(callback)
+        ten_hotels_counter = 0
         for i_image in hotel_info["images"]:
+            if ten_hotels_counter == 10:
+                break
+            ten_hotels_counter += 1
             bot.send_photo(user_id, i_image)
         
         formatted_message = {

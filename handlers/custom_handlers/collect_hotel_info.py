@@ -91,7 +91,6 @@ def get_check_out_date(message: Message) -> None:
                 date.append(i_element)
                 
             data["check_out_date"] = "-".join(date)
-            logger.debug(date)
             
         bot.send_message(message.from_user.id, "Я запомнил. Теперь введите количество взрослых.")
         bot.set_state(message.from_user.id, HotelInfoState.adults, message.chat.id)
@@ -109,14 +108,20 @@ def get_check_out_date(message: Message) -> None:
 def get_adults_amount(message: Message) -> None:
     """ Хендлер для состояния запроса кол-ва взрослых. """
     
-    logger.info("Get amount of adults state in collecting hotel info started.")
-    save_message(message)
-    
-    bot.send_message(message.from_user.id, "Я запомнил. Теперь введите количество детей.")
-    bot.set_state(message.from_user.id, HotelInfoState.kids, message.chat.id)
-    
-    with bot.retrieve_data(message.from_user.id, message.chat.id) as data:
-        data["adults"] = message.text
+    try:
+        int(message.text)
+        logger.info("Get amount of adults state in collecting hotel info started.")
+        save_message(message)
+        
+        bot.send_message(message.from_user.id, "Я запомнил. Теперь введите количество детей.")
+        bot.set_state(message.from_user.id, HotelInfoState.kids, message.chat.id)
+        
+        with bot.retrieve_data(message.from_user.id, message.chat.id) as data:
+            data["adults"] = message.text
+            
+    except ValueError:
+        logger.warning("Adults amount is not integer.")
+        bot.send_message(message.from_user.id, "Попробуйте еще раз.")
 
 
 @bot.message_handler(state=HotelInfoState.kids)
